@@ -1,13 +1,16 @@
+*{
+  font-size: 4vh;
+}
 body {
     background-color: #222;
     color: #fff;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    padding-top: 100px;
+    
   }
   
   h1 {
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: 500;
   }
   
@@ -16,15 +19,17 @@ body {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 500;
     margin-top: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 0.2rem;
+    
   }
   
   button:hover {
-    background-color: #e53935;
+    background-color: #e34f4c;
   }
   
   .first {
@@ -46,7 +51,7 @@ body {
   }
   
   #message {
-    font-size: 24px;
+    font-size: 1.5rem;
     margin-top: 50px;
   }
   
@@ -55,5 +60,8 @@ body {
     
     margin: auto;
     margin-top: 30px;
+  }
+  #tryagain:hover{
+    background-color: #6cb1ea;
   }
   
