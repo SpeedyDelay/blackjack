@@ -1,102 +1,87 @@
 let firstCard = document.getElementById("showfirst");
 let secondCard = document.getElementById("showsecond");
 let thirdCard = document.getElementById("thirdcard")
-let cardsEl=document.getElementById("cards")
-let cards=[]
-let isAlive="true"
-let fourthCard = document.getElementById("showfourth")
+let cardsEl = document.getElementById("cards")
+let enemyCardsEl=document.getElementById("Enemycards")
+let cards = []
+let enemyCards=[]
+let isAlive = "true"
 let buttonInnertext = document.getElementById("button");
+let buttonReveal=document.getElementById("reveal")
 let messageEl = document.getElementById("message");
 let tryAgain = document.getElementById("tryagain")
-var counter = 0;
 let message = ""
 let randomNumber = 0
-let randomNumber2 = 0
-let randomNumber3 = 0
-let randomNumber4 = 0
-let sta2s = ""
+let randomNumberenemy=0
 let sum = 0
-let elNum = document.createElement("div")
-elNum.innerHTML="ses"
+let enemySum=0
+function reveal(){
+  enemyCardsEl.textContent=enemyCards
+  isAlive="false"
+  if(sum<21 && enemySum<21){
+    if(21-sum<enemySum-21){
+      message="player won"
+    }
+    if(21-sum>enemySum-21){
+      message="computer won"
+    }
+    else{
+      message="player won"
+    }
+  }
+  if(sum==21){
+    message="player got the blackjack"
+    }
+  if(enemySum==21){
+    message="computer got the blackjack"
+
+  }
+  if(enemySum==21&&sum==21){
+    message="both got the blackjack"
+
+  }
+  if(enemySum>21&&sum<21){
+    message="computer lost player won"
+  }
+  if(enemySum<21&&sum>21){
+    message="player lost computer won"
+  }
+  if(enemySum>21&&sum>21){
+    message="both lost draw"
+  }
+  if(enemySum==sum){
+    message="draw"
+  }
+  messageEl.textContent=message
+  tryAgain.style.display = "block"
+}
 function draw() {
-  if (isAlive=="true"){
-  randomNumber = Math.floor(Math.random() * 11) + 1;
-  cards.push(randomNumber)
-  sum += randomNumber
-  cardsEl.innerText=cards
-  if (sum>21){
-    isAlive="false"
-    message = "You lost! Try again."
-    messageEl.innerText = message;
-  }
-  if(sum==21){
-    message="You won! You are perfect."
-    messageEl.innerText=message
-    
-    isAlive="false"
-  }
-  if (isAlive=="false"){
-    tryAgain.style.display = "block"
-  }
-}
-    /*
-  while (sum != 21 && sum < 21) {
-
+  if (isAlive == "true") {
+    randomNumber = Math.floor(Math.random() * 11) + 1;
+    while(cards.includes(randomNumber)==true||enemyCards.includes(randomNumber)==true&&(cards.length+enemyCards.length)<10){
+      randomNumber = Math.floor(Math.random() * 11) + 1;}
+    cards.push(randomNumber)
     sum += randomNumber
-    randomNumber = Math.floor(Math.random() * 11) + 1;
-    let elNum = document.createElement("div")
-    elNum.innerText="ses"
-    firstCard.innerText = randomNumber;
-    buttonInnertext.innerText = "Wanna Draw For Second?";
-    counter++
-  }
-  
-  if (counter === 0) {
-    sum+=randomNumber
-    randomNumber = Math.floor(Math.random() * 11) + 1;
-    firstCard.innerText = randomNumber;
-    buttonInnertext.innerText = "Wanna Draw For Second?";
-  }
+    cardsEl.innerText = cards
+    //
+    if(enemySum<=20){randomNumberenemy = Math.floor(Math.random() * 11) + 1;
+      while(cards.includes(randomNumberenemy)==true||enemyCards.includes(randomNumberenemy)==true&&(cards.length+enemyCards.length)<10){
+        randomNumberenemy = Math.floor(Math.random() * 11) + 1;}
+        enemyCards.push(randomNumberenemy)
+    
+      
 
-  if (counter === 1) {
-    randomNumber2 = Math.floor(Math.random() * 11) + 1;
-    secondCard.innerText = randomNumber2
-    sum = parseInt(randomNumber) + parseInt(randomNumber2);
-    buttonInnertext.innerText = "Wanna Draw For Third?"
-  }
+    enemySum+=randomNumberenemy
+    enemyCardsEl.textContent+=("x"+",")}
+   
+   
+    
 
-  if (counter === 2 ) {
-    randomNumber3 = Math.floor(Math.random() * 11) + 1
-    thirdCard.innerText = randomNumber3
-    console.log(randomNumber3)
-    sum+=randomNumber3
+    }
     
   }
-  if(counter===3){
-    randomNumber4 = Math.floor(Math.random() * 11) + 1
-    fourthCard.innerText = randomNumber4
-    console.log(randomNumber3)
-    sum+=randomNumber4
-  }
 
-  if(sum==21){
-    message="You won! You are perfect."
-    messageEl.innerText=message
-    tryAgain.style.display = "block"
-    counter=-2
-  }
-  if (sum > 21) {
-    message = "You lost! Try again."
-    messageEl.innerText = message;
-    sta2s = "lost"
-    
-    tryAgain.style.display = "block"
-    buttonInnertext.textContent = "Try Again!"
-    counter=-2
-  }
-  
-  counter++;*/
-}
+
 
 messageEl.textContent = message;
 console.log(messageEl.innerText)
