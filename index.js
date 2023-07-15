@@ -22,11 +22,11 @@ function reveal(){
     if(21-sum<21-enemySum){
       message="player won"
     }
-    if(21-sum>enemySum-21){
+    if(21-sum>21-enemySum){
       message="computer won"
     }
     else{
-      message="player won"
+      message="draw"
     }
   }
   if(sum==21){
