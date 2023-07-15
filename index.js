@@ -19,7 +19,7 @@ function reveal(){
   enemyCardsEl.textContent=enemyCards
   isAlive="false"
   if(sum<21 && enemySum<21){
-    if(21-sum<enemySum-21){
+    if(21-sum<21-enemySum){
       message="player won"
     }
     if(21-sum>enemySum-21){
